@@ -31,10 +31,10 @@ let opcao = Number.parseInt(prompt(`Selecione um serviço do hotel:\n
 
     switch(opcao) {
     case 1:
-        reservaQuartos();
+        reservarQuartos();
         break;
     case 2:
-        cadastroHospedes();
+        cadastrarHospedes();
         break;
     case 3:
         abastecerCarro();
@@ -43,10 +43,10 @@ let opcao = Number.parseInt(prompt(`Selecione um serviço do hotel:\n
         horaDeComer();
         break;
     case 5:
-        verificarAuditorio();
+        lugaresAuditorio();
         break;
     case 6:
-        reservaRestaurante();
+        reservarRestaurante();
         break;
     case 7:
         arCondicionado();
@@ -62,7 +62,7 @@ let opcao = Number.parseInt(prompt(`Selecione um serviço do hotel:\n
 }
 
 
-function reservaQuartos() {
+function reservarQuartos() {
     let valorDiaria = Number.parseFloat(prompt('Qual o valor da diária?'));
     let quantidadeDeDias = Number.parseInt(prompt('Quantas diárias serão necessárias?'));
     let total = valorDiaria * quantidadeDeDias;
@@ -72,8 +72,8 @@ function reservaQuartos() {
         inicio();
     } else {
         let nomeHospede = prompt('Qual o nome do hospede?');
-        let respostaUsuario = prompt(`${nomeUsuario}, você confirma a hospedagem para ${nomeHospede} por ${quantidadeDeDias} dias? S/N`);
-        if (respostaUsuario === "S" || respostaUsuario === "s" || respostaUsuario === "Sim" || respostaUsuario === "SIM") {
+        let confirma = prompt(`${nomeUsuario}, você confirma a hospedagem para ${nomeHospede} por ${quantidadeDeDias} dias? S/N`);
+        if (confirma === "S" || confirma === "s" || confirma === "Sim" || confirma === "SIM") {
             alert(`${nomeUsuario}, reserva efetuada para ${nomeHospede}. O valor total é de ${total}R$`);
         } else {
             alert(`${nomeUsuario}, reserva não efetuada`);
@@ -82,7 +82,7 @@ function reservaQuartos() {
     }
 }
 
-function cadastroHospedes() {
+function cadastrarHospedes() {
     let totalValorHospedagem = 0;
     let gratuidades = 0;
     let meias = 0;
@@ -94,7 +94,7 @@ function cadastroHospedes() {
     while (hospedes.length < 15) {
         const nomeHospede = prompt("Qual o nome do Hóspede? (Digite 'PARE' para encerrar)");
         if (nomeHospede.toUpperCase() === "PARE") {
-            break; // Encerra o loop se o usuário digitar 'PARE'
+            break;
         }
         const idadeHospede = parseInt(prompt("Qual a idade do Hóspede?"));
         if (isNaN(idadeHospede)) {
@@ -113,7 +113,7 @@ function cadastroHospedes() {
         hospedes.push({ nome: nomeHospede, idade: idadeHospede });
     }
         alert(`${nomeUsuario}, o valor total das hospedagens é: R$${totalValorHospedagem}.\n ${gratuidades} gratuidade(s).\n ${meias} meia(s).`);
-        return cadastroHospedes();
+        return cadastrarHospedes();
     } else if (opcao === 2) {
         const nomePesquisa = prompt("Qual o nome do Hóspede?");
         const hospedeEncontrado = hospedes.find(hospede => hospede.nome === nomePesquisa);
@@ -122,7 +122,7 @@ function cadastroHospedes() {
         } else {
             alert(`Hóspede ${nomePesquisa} não foi encontrado(a)!`);
         }
-        return cadastroHospedes();
+        return cadastrarHospedes();
     } else if (opcao === 3) {
         if (hospedes.length === 0) {
             alert("Não há hóspedes cadastrados.");
@@ -133,13 +133,13 @@ function cadastroHospedes() {
             });
             alert(lista);
         }
-        return cadastroHospedes();
+        return cadastrarHospedes();
     } else if (opcao == 4){
         alert(`Obrigado ${nomeUsuario}, volte sempre!`);
         return inicio();
     } else {
         alert('Insira uma opção válida!');
-        return cadastroHospedes();
+        return cadastrarHospedes();
     }
 }
 
@@ -182,3 +182,56 @@ function horaDeComer() {
     }
 }
 
+function lugaresAuditorio() {
+    const capacidadeMaxima = 350;
+    let numeroConvidados = parseInt(prompt("Qual o número de convidados para o seu evento?"));
+    if (numeroConvidados > capacidadeMaxima || numeroConvidados < 0) {
+        alert("Quantidade de convidados superior à capacidade máxima");
+        return lugaresAuditorio();
+    } else if (numeroConvidados <= 220) {
+        let cadeirasAdicionais = 0;
+        if (numeroConvidados > 150) {
+            cadeirasAdicionais = numeroConvidados - 150;
+            if (cadeirasAdicionais > 70) {
+                cadeirasAdicionais = 70;
+            }
+        }
+        alert(`Use o auditório Laranja (inclua mais ${cadeirasAdicionais} cadeiras)`);
+        let confirmacao = prompt("Gostaria de efetuar a reserva? S/N").toUpperCase();
+        if (confirmacao === "S" || confirmacao === "s" || confirmacao === "Sim" || confirmacao === "SIM") {
+            alert(`${nomeUsuario}, reserva efetuada com sucesso.`);
+            return inicio();
+        } else {
+            alert("Reserva não efetuada.");
+            return inicio();
+        }
+    } else {
+        alert("Use o auditório Colorado");
+        let confirmacao = prompt("Gostaria de efetuar a reserva? S/N").toUpperCase();
+        if (confirmacao === "S" || confirmacao === "s" || confirmacao === "Sim" || confirmacao === "SIM") {
+            alert(`${nomeUsuario}, reserva efetuada com sucesso.`);
+            return inicio();
+        } else {
+            alert("Reserva não efetuada.");
+            return inicio();
+        }
+    }
+}
+
+function reservarRestaurante() {
+    let diaSemana = prompt("Qual o dia do seu evento?").toLowerCase();
+    let horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+
+    if ((diaSemana === "segunda" || diaSemana === "terca" || diaSemana === "quarta" || diaSemana === "quinta" || diaSemana === "sexta") && (horaEvento >= 7 && horaEvento < 23)) {
+        let nomeEmpresa = prompt("Qual o nome da empresa?");
+        alert(`Restaurante reservado para ${nomeEmpresa}: ${diaSemana} às ${horaEvento}hs.`);
+        return inicio();
+    } else if ((diaSemana === "sabado" || diaSemana === "domingo") && (horaEvento >= 7 && horaEvento < 15)) {
+        let nomeEmpresa = prompt("Qual o nome da empresa?");
+        alert(`Restaurante reservado para ${nomeEmpresa}: ${diaSemana} às ${horaEvento}hs.`);
+        return inicio();
+    } else {
+        alert("Restaurante indisponível");
+        return inicio();
+    }
+}
