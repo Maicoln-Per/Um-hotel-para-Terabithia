@@ -142,3 +142,43 @@ function cadastroHospedes() {
         return cadastroHospedes();
     }
 }
+
+function reservaEvento() {
+    let tempoEvento = parseFloat(prompt("Qual a duração do evento em horas?"));
+    let quantidadeDeGarcons = parseInt(prompt("Quantos garçons serão necessários?"));
+    let custoTotal = tempoEvento * quantidadeDeGarcons * 10.50;
+    alert(`Custo total: R$ ${custoTotal.toFixed(2)}`);
+    let confirmacao = prompt(`${nomeUsuario}, gostaria de efetuar a reserva? S/N`).toUpperCase();
+    if (confirmacao === "S" || confirmacao === "s" || confirmacao === "Sim" || confirmacao === "SIM") {
+        alert(`${nomeUsuario}, reserva efetuada com sucesso.`);
+    } else {
+        alert(`Reserva não efetuada, ${nomeUsuario}.`);
+    }
+}
+
+function horaDeComer() {
+    const capacidadeMaxima = 350;
+    let numeroConvidados = parseInt(prompt("Qual o número de convidados para o evento?"));
+    if (numeroConvidados > capacidadeMaxima) {
+        alert("Quantidade de convidados superior à capacidade máxima.");
+        return inicio();
+    } else {
+        let cafeLitros = numeroConvidados * 0.2;
+        let aguaLitros = numeroConvidados * 0.5;
+        let salgados = numeroConvidados * 7;
+        let custoCafe = cafeLitros * 0.8;
+        let custoAgua = aguaLitros * 0.4;
+        let custoSalgados = (salgados / 100) * 34;
+        let custoTotal = custoCafe + custoAgua + custoSalgados;
+        alert(`O evento precisará de ${cafeLitros} litros de café, ${aguaLitros} litros de água, ${salgados} salgados. O custo total do evento será de R$ ${custoTotal.toFixed(2)}`);
+        let confirmacao = prompt(`${nomeUsuario}, gostaria de efetuar a reserva? S/N`).toUpperCase();
+        if (confirmacao === "S" || confirmacao === "s" || confirmacao === "Sim" || confirmacao === "SIM") {
+            alert(`${nomeUsuario}, reserva efetuada com sucesso.`);
+            return inicio();
+        } else {
+            alert("Reserva não efetuada.");
+            return inicio();
+        }
+    }
+}
+
