@@ -28,10 +28,10 @@ Ao longo deste desafio, desenvolvi programas para os funcionários do Hotel Tera
 <h2>Para acessar...</h2>
 <p>Ao acessar o sistema, o sistema irá perguntar o nome do seu Hotel com a mensagem: "O nome do hotel é ... (Nome do hotel que você digitou)"</p>
 <p>Em seguida, o sistema irá perguntar seu nome. A partir daí, você estará vendo a entrada do Hotel com um botão clicável embaixo.</p>
-<img src="imagens/entrada-hotel.png">
+<img src="../Hotel/imagens/entrada-hotel.png">
 <p>Ao clicar no botão, o sistema irá pedir uma senha, essa senha foi definida por padrão no exercício, e para acessar as funcionalidades, você deverá informa-lá. Qualquer coisa diferente dessa senha não deixará você acessar as funcionalidades.</p>
 <h2>A senha para acessar o Hotel é: <i><strong>2678</strong></i></h2>
-<img src="imagens/senha-hotel.png">
+<img src="../Hotel/imagens/senha-hotel.png">
 <hr>
 <h1>Código em partes:</h1>
 <h3>1) Quantos quartos são?</h3> 
