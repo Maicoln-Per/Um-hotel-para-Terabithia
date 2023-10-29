@@ -10,7 +10,7 @@ Ao longo deste desafio, desenvolvi programas para os funcionários do Hotel Tera
 
 <h2>Para utilizar o sistema do Hotel</h2>
 <p>1º opção: Baixar o arquivo zip deste repositório e acessar o arquivo index na mesma pasta.</p>
-<p>2º opção: Acessar o site no ar através dos links que estão no canto superior direito do repositório do Github.</p>
+<p>2º opção: Acessar o site no ar através do link que está no canto superior direito do repositório do Github.</p>
 <h2>Neste hotel se encontram diversas opções de escolha sendo elas:</h2>
 
 <ol>
